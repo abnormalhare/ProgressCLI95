@@ -80,7 +80,7 @@ def screenDownFun():
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print(lang.barProgress1.format(progressbar[0], progressbar[1]))
+        print(lang.barProgress1.format(progressbar[0] + progressbar[1], progressbar[1]))
     else:
         print(lang.bar, end='')
         for segment in bar:
@@ -92,17 +92,18 @@ def settings(systemname, systemlevel, systempro):
     clear()
     rprint(sett)
     choise = input("> ")
+
     if choise == "1":
         clear()
         print(lang.doYouWant)
         rprint(lang.bar, " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
-        print(lang.barProgressP1, " 95% ",lang.inYourBar)
+        print(lang.barProgress1.format("95", "5"))
         print(lang.popupSetting)
         choice = input("> ")
-        if choice == "Y" or choice =="y":
+        if choice.lower() == "y":
             editSettingsFile("screenDown", "True")
             settings(systemname, systemlevel, systempro)
-        elif choice == "N" or choice == "n":
+        elif choice.lower() == "n":
             editSettingsFile("screenDown", "False")
             settings(systemname, systemlevel, systempro)
         else:
